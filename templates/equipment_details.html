@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Equipment Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Equipment Details</h1>
+
+<a href="/">Dashboard</a> |
+<a href="/equipment">Equipment List</a>
+
+<hr>
+
+<h2>Equipment Information</h2>
+
+<p><strong>Name:</strong> {{ equipment[1] }}</p>
+<p><strong>Serial Number:</strong> {{ equipment[2] }}</p>
+<p><strong>Department:</strong> {{ equipment[3] }}</p>
+<p><strong>Purchase Date:</strong> {{ equipment[4] }}</p>
+<p><strong>Status:</strong> {{ equipment[5] }}</p>
+
+<hr>
+
+<h2>Update Status</h2>
+
+<form action="/update_status/{{ equipment[0] }}" method="POST">
+
+    <select name="status">
+        <option value="Active">Active</option>
+        <option value="Under Maintenance">Under Maintenance</option>
+        <option value="Decommissioned">Decommissioned</option>
+    </select>
+
+    <input type="submit" value="Update">
+
+</form>
+
+<hr>
+
+<h2>Maintenance History</h2>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Date</th>
+        <th>Technician</th>
+        <th>Issue</th>
+        <th>Resolution</th>
+        <th>Next Due</th>
+    </tr>
+
+    {% for log in logs %}
+    <tr>
+        <td>{{ log[2] }}</td>
+        <td>{{ log[3] }}</td>
+        <td>{{ log[4] }}</td>
+        <td>{{ log[5] }}</td>
+        <td>{{ log[6] }}</td>
+    </tr>
+    {% endfor %}
+
+    {% if logs|length == 0 %}
+    <tr>
+        <td colspan="5">No maintenance records found.</td>
+    </tr>
+    {% endif %}
+
+</table>
+
+<br>
+
+<a href="/add_log/{{ equipment[0] }}">
+    <button>Add Maintenance Log</button>
+</a>
+
+</body>
+</html>

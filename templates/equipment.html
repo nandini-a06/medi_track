@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Equipment List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Equipment List</h1>
+
+<a href="/">Dashboard</a> |
+<a href="/add_equipment">Add Equipment</a>
+
+<br><br>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Serial Number</th>
+        <th>Department</th>
+        <th>Purchase Date</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for item in equipment %}
+    <tr>
+        <td>{{ item[0] }}</td>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td>
+        <td>{{ item[4] }}</td>
+        <td>{{ item[5] }}</td>
+        <td>
+            <a href="/equipment/{{ item[0] }}">View</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>

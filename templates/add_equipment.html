@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Equipment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Add New Equipment</h1>
+
+<a href="/">Dashboard</a> |
+<a href="/equipment">Equipment List</a>
+
+<br><br>
+
+<form method="POST">
+
+    <label>Equipment Name</label><br>
+    <input type="text" name="equipment_name" required>
+    <br><br>
+
+    <label>Serial Number</label><br>
+    <input type="text" name="serial_number" required>
+    <br><br>
+
+    <label>Department</label><br>
+    <input type="text" name="department" required>
+    <br><br>
+
+    <label>Purchase Date</label><br>
+    <input type="date" name="purchase_date" required>
+    <br><br>
+
+    <label>Status</label><br>
+    <select name="status">
+        <option value="Active">Active</option>
+        <option value="Under Maintenance">Under Maintenance</option>
+        <option value="Decommissioned">Decommissioned</option>
+    </select>
+
+    <br><br>
+
+    <input type="submit" value="Add Equipment">
+
+</form>
+
+</body>
+</html>

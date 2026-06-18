@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Maintenance Log</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Add Maintenance Log</h1>
+
+<a href="/">Dashboard</a> |
+<a href="/equipment">Equipment List</a>
+
+<hr>
+
+<form method="POST">
+
+    <label>Maintenance Date</label><br>
+    <input type="date" name="maintenance_date" required>
+    <br><br>
+
+    <label>Technician Name</label><br>
+    <input type="text" name="technician_name" required>
+    <br><br>
+
+    <label>Issue Reported</label><br>
+    <textarea name="issue_reported" rows="4" cols="50" required></textarea>
+    <br><br>
+
+    <label>Resolution Notes</label><br>
+    <textarea name="resolution_notes" rows="4" cols="50" required></textarea>
+    <br><br>
+
+    <label>Next Due Date</label><br>
+    <input type="date" name="next_due_date" required>
+    <br><br>
+
+    <input type="submit" value="Save Maintenance Log">
+
+</form>
+
+</body>
+</html>

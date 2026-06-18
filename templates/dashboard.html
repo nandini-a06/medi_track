@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediTrack Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>MediTrack Dashboard</h1>
+
+<a href="/">Dashboard</a> |
+<a href="/equipment">Equipment</a> |
+<a href="/add_equipment">Add Equipment</a>
+
+<hr>
+
+<h2>Summary</h2>
+
+<p><strong>Total Equipment:</strong> {{ total }}</p>
+<p><strong>Active:</strong> {{ active }}</p>
+<p><strong>Under Maintenance:</strong> {{ maintenance }}</p>
+<p><strong>Decommissioned:</strong> {{ decommissioned }}</p>
+
+<hr>
+
+<h2>Overdue Maintenance</h2>
+
+<table>
+    <tr>
+        <th>Equipment Name</th>
+        <th>Next Due Date</th>
+    </tr>
+
+    {% for item in overdue %}
+    <tr>
+        <td>{{ item[0] }}</td>
+        <td>{{ item[1] }}</td>
+    </tr>
+    {% endfor %}
+
+    {% if overdue|length == 0 %}
+    <tr>
+        <td colspan="2">No overdue maintenance.</td>
+    </tr>
+    {% endif %}
+
+</table>
+
+</body>
+</html>
